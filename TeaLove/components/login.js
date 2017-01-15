@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Text, Button } from 'react-native';
+import { AsyncStorage, View, Text, Button } from 'react-native';
 import LabelledTextInput from './labelled-text-input';
 
 class Login extends Component {
@@ -9,14 +9,39 @@ class Login extends Component {
     this.state = {
       username: props.initialUsername,
       password: props.initialPassword,
+      errorMessage: null,
     };
+
+    this.login = this.login.bind(this);
   }
 
   login(username, password) {
+    fetch('http://localhost:3000/auth', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username, password }),
+    })
+      .then(async res => ({
+        status: res.status,
+        text: await res.text(),
+      }))
+      .then(({ status, text }) => {
+        if (status === 200) {
+          return text;
+        }
+
+        throw new Error(text);
+      })
+      .then(token => AsyncStorage.setItem("@TeaLove:token", token))
+      .catch(({ message: errorMessage }) => {
+        this.setState({ errorMessage });
+      })
   }
 
   render() {
-    const { username, password } = this.state;
+    const { username, password, errorMessage } = this.state;
 
     return (
       <View style={{
@@ -37,6 +62,7 @@ class Login extends Component {
           onChangeText={newPassword => this.setState({ password: newPassword })}
           value={password}
         />
+        {errorMessage && <Text style={{ color: 'red' }}>{errorMessage}</Text>}
         <Button
           onPress={() => this.login(username, password)}
           title="Sign in"
