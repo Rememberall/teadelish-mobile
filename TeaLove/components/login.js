@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { AsyncStorage, View, Text, Button } from 'react-native';
 import LabelledTextInput from './labelled-text-input';
+import Heading from './heading';
 
 class Login extends Component {
   constructor(props) {
@@ -35,6 +36,7 @@ class Login extends Component {
         throw new Error(text);
       })
       .then(token => AsyncStorage.setItem("@TeaLove:token", token))
+      .then(this.props.toHome)
       .catch(({ message: errorMessage }) => {
         this.setState({ errorMessage });
       })
@@ -45,11 +47,14 @@ class Login extends Component {
 
     return (
       <View style={{
-        padding: 10,
         flex: 1,
         alignSelf: 'stretch',
-        alignItems: 'flex-start',
       }}>
+        <Heading style={{
+          alignSelf: 'flex-start',
+        }}>
+          Sign in!
+        </Heading>
         <LabelledTextInput
           label="Username"
           autoFocus
@@ -63,14 +68,15 @@ class Login extends Component {
           value={password}
         />
         {errorMessage && <Text style={{ color: 'red' }}>{errorMessage}</Text>}
-        <Button
-          onPress={() => this.login(username, password)}
-          title="Sign in"
-          color="green"
-          backgroundColor="yellow"
-          accessibilityLabel="Sign in"
-        />
-
+        <View style={{ alignSelf: 'flex-end' }}>
+          <Button
+            onPress={() => this.login(username, password)}
+            title="Sign in"
+            color="green"
+            backgroundColor="yellow"
+            accessibilityLabel="Sign in"
+          />
+        </View>
       </View>
     );
   }

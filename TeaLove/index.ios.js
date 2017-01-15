@@ -1,29 +1,31 @@
 import React from 'react';
-import { AppRegistry, StyleSheet, Text, View } from 'react-native';
+import { AppRegistry, StyleSheet, Navigator, View } from 'react-native';
 import Login from './components/login';
-
-const TeaLove = () => (
-  <View style={styles.container}>
-    <Text style={styles.welcome}>
-      TeaLove!
-    </Text>
-    <Login />
-  </View>
-);
+import Home from './components/home';
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
+    padding: 20,
+    paddingTop: 40,
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
 });
+
+const TeaLove = () => (
+  <View style={styles.container}>
+    <Navigator
+      initialRoute={{ title: 'Login' }}
+      renderScene={(route, navigator) => {
+        switch (route.title) {
+          case 'Login':
+            return <Login toHome={() => navigator.push({ title: 'Home' })} />;
+          case 'Home':
+            return <Home />;
+        }
+      }}
+    />
+  </View>
+);
 
 AppRegistry.registerComponent('TeaLove', () => TeaLove);

@@ -12,8 +12,9 @@ class LabelledTextInput extends Component {
 
     return (
       <View style={{
-        margin: 10,
         alignSelf: 'stretch',
+        marginTop: 5,
+        marginBottom: 5,
       }}>
         <TouchableWithoutFeedback
           activeOpacity={0.9}
