@@ -22,8 +22,8 @@ class Home extends Component {
 
     return (
       <View style={{
-          flex: 1,
-        }}>
+        flex: 1,
+      }}>
         <View>
           <Image
             source={require('../images/voldemort.jpg')}
@@ -32,32 +32,62 @@ class Home extends Component {
           {message && <Text>{message}</Text>}
         </View>
         <View style={{
-            flex: 1,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-          }}>
+          flex: 1,
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+        }}>
           <View>
-            <Text>Tea</Text>
+            <Image
+              style={{
+                height: 30,
+                width: 30,
+              }}
+              source={require('../images/teacup.png')}
+            />
           </View>
           <View>
             <Text
               style={{
+                fontSize: 35,
                 textAlign: 'center',
+                marginTop: -7,
               }}
             >
-              Addition
+              +
             </Text>
 
           </View>
-          <View ><Text>Comments</Text></View>
-          <View><Text>Statistics</Text></View>
+          <View>
+            <Text
+              style={{
+                fontSize: 30,
+                textAlign: 'center',
+                marginTop: 2,
+              }}
+            >
+              ≡
+            </Text>
+          </View>
+          <View>
+            <Image
+              style={{
+                height: 40,
+                width: 40,
+                marginTop: -4,
+              }}
+              source={require('../images/chart.png')}
+            />
+          </View>
         </View>
         <View>
           <Text style={{
-              textAlign: 'center',
-            }}>Bullock Holmes</Text>
+            textAlign: 'center',
+          }}>
+            Bullock Holmes
+          </Text>
         </View>
-        <View style={{
+        <View
+          style={{
             flex: 1,
             flexDirection: 'row',
             justifyContent: 'space-between',
