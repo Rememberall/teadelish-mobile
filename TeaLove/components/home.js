@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import { AsyncStorage, View, Text, Image } from 'react-native';
+import { AsyncStorage, View, Text, Image, TouchableHighlight } from 'react-native';
 import Heading from './heading';
+import CheckinSummary from './checkin-summary';
+import timeOfDay from '../lib/time-of-day';
 
 class Home extends Component {
   constructor() {
     super();
     this.state = {
       token: null,
-      message: null,
+      user: null,
     };
   }
 
@@ -21,95 +23,113 @@ class Home extends Component {
         headers: { 'X-Token': token },
       }))
       .then(res => res.json())
-      .then(user => this.setState({ user }))
-      .catch(err => this.setError({ message: err.message }));
+      .then(user => this.setState({ user }));
   }
 
   render() {
-    const { user, token, message } = this.state;
+    const { user } = this.state;
 
     return (
-      <View style={{
-        flex: 1,
-      }}>
-        <View
+      <View
         style={{
           flex: 1,
-          alignItems: 'center',
+          justifyContent: 'space-between',
         }}
-        >
-          <Image
-            style={{
-              height: 150,
-              width: 150,
-              borderRadius: 75,
-            }}
-            source={require('../images/voldemort.jpg')}
-          />
-          {user && <Heading>{user.username}</Heading>}
-          {message && <Text>{message}</Text>}
-        </View>
+      >
         <View style={{
           flex: 1,
-          flexDirection: 'row',
-          justifyContent: 'space-between',
         }}>
-          <View>
+          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
             <Image
               style={{
-                height: 30,
-                width: 30,
+                height: 150,
+                width: 150,
+                borderRadius: 75,
               }}
-              source={require('../images/teacup.png')}
+              source={require('../images/voldemort.jpg')}
             />
+            <View>
+              {!user && <Text>Loading your information…</Text>}
+              {user && <Heading>Good {timeOfDay()}, {user.username}!</Heading>}
+            </View>
           </View>
-          <View>
-            <Text
-              style={{
-                fontSize: 35,
-                textAlign: 'center',
-                marginTop: -7,
-              }}
-            >
-              +
-            </Text>
+          <View style={{
+            maxHeight: 35,
+            flex: 1,
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+          }}>
+            <View>
+              <Image
+                style={{
+                  height: 30,
+                  width: 30,
+                }}
+                source={require('../images/teacup.png')}
+              />
+            </View>
+            <View>
+              <Text
+                style={{
+                  fontSize: 35,
+                  textAlign: 'center',
+                  marginTop: -7,
+                }}
+              >
+                +
+              </Text>
 
-          </View>
-          <View>
-            <Text
-              style={{
-                fontSize: 30,
-                textAlign: 'center',
-                marginTop: 2,
-              }}
-            >
-              ≡
-            </Text>
-          </View>
-          <View>
-            <Image
-              style={{
-                height: 40,
-                width: 40,
-                marginTop: -4,
-              }}
-              source={require('../images/chart.png')}
-            />
+            </View>
+            <View>
+              <Text
+                style={{
+                  fontSize: 30,
+                  textAlign: 'center',
+                  marginTop: 2,
+                }}
+              >
+                ≡
+              </Text>
+            </View>
+            <View>
+              <Image
+                style={{
+                  height: 40,
+                  width: 40,
+                  marginTop: -4,
+                }}
+                source={require('../images/chart.png')}
+              />
+            </View>
           </View>
         </View>
-        <View>
-          <Text style={{
-            textAlign: 'center',
-          }}>
-            Bullock Holmes
-          </Text>
+        <View style={{ marginTop: 20,flex: 1 }}>
+          {!user && (
+            <Text style={{ textAlign: 'center' }}>Loading checkins…</Text>
+          )}
+          {user && (
+            <View>
+              <Text style={{ fontSize: 24 }}>Latest checkins</Text>
+              <View style={{ marginTop: 10 }}>
+                {user.checkins.slice(0, 4).map((checkin, index) => (
+                  <View key={index} style={{ marginTop: 3, marginBottom: 3 }}>
+                    <CheckinSummary
+                      onPress={() => {}}
+                      {...checkin}
+                    />
+                  </View>
+                ))}
+              </View>
+            </View>
+          )}
         </View>
         <View
           style={{
+            maxHeight: 35,
             flex: 1,
             flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'flex-end',
+            justifyContent: 'space-around',
+            alignItems: 'center',
           }}>
           <View><Text>Home</Text></View>
           <View><Text>Search</Text></View>

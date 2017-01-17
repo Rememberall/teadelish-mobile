@@ -1,6 +1,7 @@
 const jwt = require('jwt-simple');
 const jwtSecret = require('../secrets').jwtSecret;
 const router = require('express').Router();
+const checkins = require('../data/checkins');
 
 router.get('/', (req, res) => {
   const token = req.header('X-Token');
@@ -9,7 +10,13 @@ router.get('/', (req, res) => {
     return res.status(401).send('Missing X-Token');
   }
 
-  const user = jwt.decode(token, jwtSecret);
+  const { username } = jwt.decode(token, jwtSecret);
+
+  const user = {
+    username,
+    checkins: checkins.findByUsername(username),
+  };
+
   res.send(user);
 });
 
