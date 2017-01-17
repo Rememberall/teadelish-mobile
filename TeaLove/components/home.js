@@ -13,22 +13,40 @@ class Home extends Component {
 
   componentWillMount() {
     AsyncStorage.getItem('@TeaLove:token')
-      .then(token => this.setState({ token }))
+      .then(token => {
+        this.setState({ token });
+        return token;
+      })
+      .then(token => fetch(`http://localhost:3000/me`, {
+        headers: { 'X-Token': token },
+      }))
+      .then(res => res.json())
+      .then(user => this.setState({ user }))
       .catch(err => this.setError({ message: err.message }));
   }
 
   render() {
-    const { token, message } = this.state;
+    const { user, token, message } = this.state;
 
     return (
       <View style={{
         flex: 1,
       }}>
-        <View>
+        <View
+        style={{
+          flex: 1,
+          alignItems: 'center',
+        }}
+        >
           <Image
+            style={{
+              height: 150,
+              width: 150,
+              borderRadius: 75,
+            }}
             source={require('../images/voldemort.jpg')}
           />
-          <Heading>Profile</Heading>
+          {user && <Heading>{user.username}</Heading>}
           {message && <Text>{message}</Text>}
         </View>
         <View style={{

@@ -35,7 +35,7 @@ class Login extends Component {
 
         throw new Error(text);
       })
-      .then(token => AsyncStorage.setItem("@TeaLove:token", token))
+      .then(token => AsyncStorage.setItem('@TeaLove:token', token))
       .then(this.props.toHome)
       .catch(({ message: errorMessage }) => {
         this.setState({ errorMessage });
