@@ -4,13 +4,12 @@ const router = require('express').Router();
 const checkins = require('../data/checkins');
 
 router.get('/', (req, res) => {
-  const token = req.header('X-Token');
+  const { username } = res.locals;
 
-  if (!token) {
-    return res.status(401).send('Missing X-Token');
+  if (!username) {
+    res.status(401).send();
+    return;
   }
-
-  const { username } = jwt.decode(token, jwtSecret);
 
   const user = {
     username,

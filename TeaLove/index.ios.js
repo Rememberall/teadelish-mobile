@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 const TeaLove = () => (
   <View style={styles.container}>
     <Navigator
-      initialRoute={{ title: 'Home' }}
+      initialRoute={{ title: 'Login' }}
       renderScene={(route, navigator) => {
         switch (route.title) {
           case 'Login':

@@ -22,11 +22,11 @@ router.post('/', (req, res) => {
 
   const token = jwt.encode({
     username,
-    password,
     role: user.role,
   }, jwtSecret);
 
-  return res.send(token);
+  res.send(token);
+  return;
 });
 
 module.exports = router;

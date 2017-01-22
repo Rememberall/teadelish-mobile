@@ -6,46 +6,36 @@ const tea = require('../data/tea');
 const checkins = require('../data/checkins');
 
 router.get('/', (req, res) => {
-  const token = req.header('X-Token');
+  const { username, isAdmin } = res.locals;
 
-  if (!token) {
-    return res.status(401).send('x-token is required');
-  }
-
-  const { username, password, role } = jwt.decode(token, jwtSecret);
-
-  const user = users.find(username, password);
+  const user = users.findByUsername(username);
 
   if (!user) {
-    return res.status(401).send('Wrong username or password');
+    res.status(401).send('Wrong username or password');
+    return;
   }
 
-  if (role !== 'admin') {
-    return res.status(401).send(`'Must be "admin" to access this resource, user is "${role}"`);
+  if (!isAdmin) {
+    res.status(401).send(`'Must be admin to access this resource`);
+    return;
   }
 
   return res.send(users.list());
 });
 
 router.get('/:username', (req, res) => {
-  const token = req.header('X-Token');
-
-  if (!token) {
-    return res.status(401).send('x-token is required');
-  }
-
   const requestedUsername = req.params.username;
 
-  const { username, password, role } = jwt.decode(token, jwtSecret);
+  const { username, isAdmin } = res.locals;
 
-  if (username !== requestedUsername && role !== 'admin') {
-    return res.status(401).send(`You must either have role "admin" or own the user, you are ${username}`);
+  if (username !== requestedUsername && !isAdmin) {
+    return res.status(401).send(`You must either be admin or own the user, you are ${username}`);
   }
 
   const user = users.findByUsername(requestedUsername);
 
   if (!user) {
-    return res.status(401).send('Wrong username or password');
+    return res.status(401).send('Wrong username');
   }
 
   return res.send(user);
