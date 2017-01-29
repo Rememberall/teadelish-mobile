@@ -5,8 +5,7 @@ import Heading from '../heading';
 import CheckinSummary from '../checkin-summary';
 import timeOfDay from '../../lib/time-of-day';
 import voldemort from '../../images/voldemort.jpg';
-import teacup from '../../images/teacup.png';
-import chart from '../../images/chart.png';
+import { teacup, chart } from '../../style/icons';
 
 import NavigationBar from './navigation-bar';
 
