@@ -15,7 +15,7 @@ class CheckinSummary extends Component {
             padding: 10,
             borderWidth: 1,
           }}>
-          <Text>{brand} {name} @ {timestamp}</Text>
+          <Text>{brand} {name} @ {new Date(timestamp).toString()}</Text>
         </View>
       </TouchableHighlight>
     );
