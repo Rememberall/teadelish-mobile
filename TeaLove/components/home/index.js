@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { AsyncStorage, View, Text, Image } from 'react-native';
-import Heading from './heading';
-import CheckinSummary from './checkin-summary';
-import timeOfDay from '../lib/time-of-day';
-import voldemort from '../images/voldemort.jpg';
-import teacup from '../images/teacup.png';
-import chart from '../images/chart.png';
+
+import Heading from '../heading';
+import CheckinSummary from '../checkin-summary';
+import timeOfDay from '../../lib/time-of-day';
+import voldemort from '../../images/voldemort.jpg';
+import teacup from '../../images/teacup.png';
+import chart from '../../images/chart.png';
+
+import NavigationBar from './navigation-bar';
 
 class Home extends Component {
   constructor() {
@@ -121,18 +124,7 @@ class Home extends Component {
             </View>
           )}
         </View>
-        <View
-          style={{
-            maxHeight: 35,
-            flex: 1,
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            alignItems: 'center',
-          }}>
-          <View><Text>Home</Text></View>
-          <View><Text>Search</Text></View>
-          <View><Text>Profile</Text></View>
-        </View>
+        <NavigationBar />
       </View>
     );
   }
