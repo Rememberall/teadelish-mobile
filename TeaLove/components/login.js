@@ -39,7 +39,7 @@ class Login extends Component {
       .then(this.props.toHome)
       .catch(({ message: errorMessage }) => {
         this.setState({ errorMessage });
-      })
+      });
   }
 
   render() {
@@ -55,27 +55,21 @@ class Login extends Component {
         }}>
           Sign in!
         </Heading>
-        <LabelledTextInput
-          label="Username"
+        <LabelledTextInput label="Username"
           autoFocus
           onChangeText={newUsername => this.setState({ username: newUsername })}
-          value={username}
-        />
-        <LabelledTextInput
-          label="Password"
+          value={username} />
+        <LabelledTextInput label="Password"
           secureTextEntry
           onChangeText={newPassword => this.setState({ password: newPassword })}
-          value={password}
-        />
+          value={password} />
         {errorMessage && <Text style={{ color: 'red' }}>{errorMessage}</Text>}
         <View style={{ alignSelf: 'flex-end' }}>
-          <Button
-            onPress={() => this.login(username, password)}
+          <Button onPress={() => this.login(username, password)}
             title="Sign in"
             color="green"
             backgroundColor="yellow"
-            accessibilityLabel="Sign in"
-          />
+            accessibilityLabel="Sign in" />
         </View>
       </View>
     );

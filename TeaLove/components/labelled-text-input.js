@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableWithoutFeedback } from 'react-native';
 
 const styles = {
   label: {},
-  input: {}
+  input: {},
 };
 
 class LabelledTextInput extends Component {
@@ -16,16 +16,13 @@ class LabelledTextInput extends Component {
         marginTop: 5,
         marginBottom: 5,
       }}>
-        <TouchableWithoutFeedback
-          activeOpacity={0.9}
-          onPress={() => this.refs.theInput.focus()}
-        >
+        <TouchableWithoutFeedback activeOpacity={0.9}
+          onPress={() => this.refs.theInput.focus()}>
           <View>
             <Text style={styles.label}>{label}</Text>
           </View>
         </TouchableWithoutFeedback>
-        <TextInput
-          {...rest}
+        <TextInput {...rest}
           ref="theInput"
           style={{
             marginTop: 5,
@@ -33,8 +30,7 @@ class LabelledTextInput extends Component {
             padding: 10,
             borderColor: 'gray',
             borderWidth: 1,
-          }}
-        />
+          }} />
       </View>
     );
   }

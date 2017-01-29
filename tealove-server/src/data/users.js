@@ -15,5 +15,5 @@ module.exports.findByUsername = username => users
 
 module.exports.find = (username, password) => users
   .find(user => user.username.toLowerCase() === username.toLowerCase()
-      && user.password === password
+      && user.password === password,
   );

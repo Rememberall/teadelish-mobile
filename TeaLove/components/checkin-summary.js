@@ -6,16 +6,13 @@ class CheckinSummary extends Component {
     const { onPress, brand, name, timestamp } = this.props;
 
     return (
-      <TouchableHighlight
-        activeOpacity={0.5}
+      <TouchableHighlight activeOpacity={0.5}
         underlayColor="lightgray"
         onPress={onPress}>
-        <View
-          style={{
-            padding: 10,
-            borderWidth: 1,
-          }}
-        >
+        <View style={{
+          padding: 10,
+          borderWidth: 1,
+        }}>
           <Text>{brand} {name} @ {timestamp}</Text>
         </View>
       </TouchableHighlight>
