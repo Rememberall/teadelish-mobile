@@ -14,16 +14,20 @@ const styles = StyleSheet.create({
 
 const TeaLove = () => (
   <View style={styles.container}>
-    <Navigator initialRoute={{ title: 'Home' }}
+    <Navigator
+      initialRoute={{ title: 'Home' }}
       renderScene={(route, navigator) => {
         switch (route.title) {
           case 'Login':
             return <Login toHome={() => navigator.push({ title: 'Home' })} />;
           case 'Home':
             return <Home />;
+          default: throw new Error(`Tried to navigate to a bad route '${route.title}'`);
         }
       }} />
   </View>
 );
 
 AppRegistry.registerComponent('TeaLove', () => TeaLove);
+
+export default TeaLove;

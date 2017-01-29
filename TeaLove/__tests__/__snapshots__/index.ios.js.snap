@@ -1,0 +1,248 @@
+exports[`test renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#F5FCFF",
+      "flex": 1,
+      "padding": 20,
+      "paddingTop": 40,
+    }
+  }>
+  <View
+    style={
+      Array [
+        Object {
+          "flex": 1,
+          "overflow": "hidden",
+        },
+        undefined,
+      ]
+    }>
+    <View
+      onMoveShouldSetResponder={[Function]}
+      onMoveShouldSetResponderCapture={[Function]}
+      onResponderEnd={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderReject={[Function]}
+      onResponderRelease={[Function]}
+      onResponderStart={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      onStartShouldSetResponderCapture={[Function]}
+      onTouchStart={[Function]}
+      style={
+        Object {
+          "backgroundColor": "transparent",
+          "flex": 1,
+          "overflow": "hidden",
+        }
+      }>
+      <View
+        onStartShouldSetResponderCapture={[Function]}
+        pointerEvents="auto"
+        style={
+          Array [
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "overflow": "hidden",
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+              "transform": Array [
+                Object {
+                  "translateX": 0,
+                },
+                Object {
+                  "translateY": 0,
+                },
+                Object {
+                  "scaleX": 1,
+                },
+                Object {
+                  "scaleY": 1,
+                },
+                Object {
+                  "rotate": "0deg",
+                },
+                Object {
+                  "skewX": "0deg",
+                },
+                Object {
+                  "skewY": "0deg",
+                },
+              ],
+            },
+            null,
+          ]
+        }>
+        <View
+          style={
+            Object {
+              "flex": 1,
+              "justifyContent": "space-between",
+            }
+          }>
+          <View
+            style={
+              Object {
+                "flex": 1,
+              }
+            }>
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flex": 1,
+                  "justifyContent": "center",
+                }
+              }>
+              <Image
+                source={1}
+                style={
+                  Object {
+                    "borderRadius": 75,
+                    "height": 150,
+                    "width": 150,
+                  }
+                } />
+              <View>
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail">
+                  Loading your information…
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                Object {
+                  "flex": 1,
+                  "flexDirection": "row",
+                  "justifyContent": "space-around",
+                  "maxHeight": 35,
+                }
+              }>
+              <View>
+                <Image
+                  source={1}
+                  style={
+                    Object {
+                      "height": 30,
+                      "width": 30,
+                    }
+                  } />
+              </View>
+              <View>
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
+                  style={
+                    Object {
+                      "fontSize": 35,
+                      "marginTop": -7,
+                      "textAlign": "center",
+                    }
+                  }>
+                  +
+                </Text>
+              </View>
+              <View>
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
+                  style={
+                    Object {
+                      "fontSize": 30,
+                      "marginTop": 2,
+                      "textAlign": "center",
+                    }
+                  }>
+                  ≡
+                </Text>
+              </View>
+              <View>
+                <Image
+                  source={1}
+                  style={
+                    Object {
+                      "height": 40,
+                      "marginTop": -4,
+                      "width": 40,
+                    }
+                  } />
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              Object {
+                "flex": 1,
+                "marginTop": 20,
+              }
+            }>
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "textAlign": "center",
+                }
+              }>
+              Loading checkins…
+            </Text>
+          </View>
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "flex": 1,
+                "flexDirection": "row",
+                "justifyContent": "space-around",
+                "maxHeight": 35,
+              }
+            }>
+            <View>
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail">
+                Home
+              </Text>
+            </View>
+            <View>
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail">
+                Search
+              </Text>
+            </View>
+            <View>
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail">
+                Profile
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;

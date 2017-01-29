@@ -2,7 +2,7 @@ const jwt = require('jwt-simple');
 const router = require('express').Router();
 const jwtSecret = require('../secrets').jwtSecret;
 const users = require('../data/users');
-const tea = require('../data/tea');
+const teas = require('../data/teas');
 const checkins = require('../data/checkins');
 
 router.get('/', (req, res) => {
@@ -36,7 +36,7 @@ router.get('/:username', (req, res) => {
 
   const requestedUsername = req.params.username;
 
-  const { username, password, role } = jwt.decode(token, jwtSecret);
+  const { username, role } = jwt.decode(token, jwtSecret);
 
   if (username !== requestedUsername && role !== 'admin') {
     return res.status(401).send(`You must either have role "admin" or own the user, you are ${username}`);
@@ -73,13 +73,13 @@ router.post('/:username/checkins', (req, res) => {
     return res.status(401).send('Wrong username or password');
   }
 
-  const { username, password, role } = jwt.decode(token, jwtSecret);
+  const { username, role } = jwt.decode(token, jwtSecret);
 
   if (username !== requestedUsername && role !== 'admin') {
     return res.status(401).send('Must be user or have role "admin"');
   }
 
-  const { brand, name } = tea.findById(teaId);
+  const { brand, name } = teas.findById(teaId);
 
   const checkin = checkins.create({
     username,

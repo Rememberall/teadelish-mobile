@@ -46,26 +46,28 @@ class Login extends Component {
     const { username, password, errorMessage } = this.state;
 
     return (
-      <View style={{
-        flex: 1,
-        alignSelf: 'stretch',
-      }}>
-        <Heading style={{
-          alignSelf: 'flex-start',
+      <View
+        style={{
+          flex: 1,
+          alignSelf: 'stretch',
         }}>
-          Sign in!
-        </Heading>
-        <LabelledTextInput label="Username"
+        <View style={{ alignSelf: 'flex-start' }}>
+          <Heading>Sign in!</Heading>
+        </View>
+        <LabelledTextInput
+          label="Username"
           autoFocus
           onChangeText={newUsername => this.setState({ username: newUsername })}
           value={username} />
-        <LabelledTextInput label="Password"
+        <LabelledTextInput
+          label="Password"
           secureTextEntry
           onChangeText={newPassword => this.setState({ password: newPassword })}
           value={password} />
         {errorMessage && <Text style={{ color: 'red' }}>{errorMessage}</Text>}
         <View style={{ alignSelf: 'flex-end' }}>
-          <Button onPress={() => this.login(username, password)}
+          <Button
+            onPress={() => this.login(username, password)}
             title="Sign in"
             color="green"
             backgroundColor="yellow"
@@ -79,6 +81,7 @@ class Login extends Component {
 Login.propTypes = {
   initialUsername: PropTypes.string,
   initialPassword: PropTypes.string,
+  toHome: PropTypes.func.isRequired,
 };
 
 Login.defaultProps = {

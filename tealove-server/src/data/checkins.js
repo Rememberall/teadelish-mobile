@@ -31,7 +31,7 @@ module.exports.findByUsername = username => checkins
 
 module.exports.create = (checkin) => {
   if (!checkin || !checkin.username || !checkin.brand || !checkin.name) {
-    throw new Error(`bad checkin: ${chekcin}`);
+    throw new Error(`bad checkin: ${checkin}`);
   }
 
   const checkinWithTimestamp = Object.assign({}, checkin, {

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Text, TextInput, TouchableWithoutFeedback } from 'react-native';
+import { View, Text, TextInput } from 'react-native';
 
 const styles = {
   label: {},
@@ -11,19 +11,15 @@ class LabelledTextInput extends Component {
     const { label, ...rest } = this.props;
 
     return (
-      <View style={{
-        alignSelf: 'stretch',
-        marginTop: 5,
-        marginBottom: 5,
-      }}>
-        <TouchableWithoutFeedback activeOpacity={0.9}
-          onPress={() => this.refs.theInput.focus()}>
-          <View>
-            <Text style={styles.label}>{label}</Text>
-          </View>
-        </TouchableWithoutFeedback>
-        <TextInput {...rest}
-          ref="theInput"
+      <View
+        style={{
+          alignSelf: 'stretch',
+          marginTop: 5,
+          marginBottom: 5,
+        }}>
+        <Text style={styles.label}>{label}</Text>
+        <TextInput
+          {...rest}
           style={{
             marginTop: 5,
             height: 40,

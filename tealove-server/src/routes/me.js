@@ -7,7 +7,8 @@ router.get('/', (req, res) => {
   const token = req.header('X-Token');
 
   if (!token) {
-    return res.status(401).send('Missing X-Token');
+    res.status(401).send('Missing X-Token');
+    return;
   }
 
   const { username } = jwt.decode(token, jwtSecret);
