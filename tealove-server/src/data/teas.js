@@ -1,4 +1,4 @@
-const tea = [{
+const teas = [{
   id: 1,
   brand: 'Lipton',
   name: 'Earl Grey',
@@ -12,6 +12,6 @@ const tea = [{
   name: '21:00',
 }];
 
-module.exports.list = () => tea;
+module.exports.list = () => teas;
 
-module.exports.findById = id => tea.find(tea => tea.id === id);
+module.exports.findById = id => teas.find(tea => tea.id === id);

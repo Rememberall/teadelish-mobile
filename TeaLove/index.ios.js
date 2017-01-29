@@ -22,10 +22,12 @@ const TeaLove = () => (
             return <Login toHome={() => navigator.push({ title: 'Home' })} />;
           case 'Home':
             return <Home />;
+          default: throw new Error(`Tried to navigate to a bad route '${route.title}'`);
         }
-      }}
-    />
+      }} />
   </View>
 );
 
 AppRegistry.registerComponent('TeaLove', () => TeaLove);
+
+export default TeaLove;

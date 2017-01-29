@@ -1,0 +1,16 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "max-len": ["error", 140],
+    "no-underscore-dangle": ["error", {
+      "allow": ["_id"]
+    }],
+    "react/jsx-closing-bracket-location": ["error", "after-props"],
+    "react/jsx-space-before-closing": ["error", "always"],
+    "react/jsx-filename-extension": ["error", { "extensions": [".js"] }],
+    "react/prefer-stateless-function": "off",
+    "react/prop-types": [2, {
+      "ignore": ["children"]
+    }]
+  }
+}

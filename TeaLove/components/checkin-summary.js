@@ -14,8 +14,7 @@ class CheckinSummary extends Component {
           style={{
             padding: 10,
             borderWidth: 1,
-          }}
-        >
+          }}>
           <Text>{brand} {name} @ {timestamp}</Text>
         </View>
       </TouchableHighlight>
@@ -27,6 +26,7 @@ CheckinSummary.propTypes = {
   brand: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   timestamp: PropTypes.number.isRequired,
+  onPress: PropTypes.func.isRequired,
 };
 
 export default CheckinSummary;

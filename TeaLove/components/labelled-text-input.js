@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Text, TextInput, TouchableWithoutFeedback } from 'react-native';
+import { View, Text, TextInput } from 'react-native';
 
 const styles = {
   label: {},
-  input: {}
+  input: {},
 };
 
 class LabelledTextInput extends Component {
@@ -11,30 +11,22 @@ class LabelledTextInput extends Component {
     const { label, ...rest } = this.props;
 
     return (
-      <View style={{
-        alignSelf: 'stretch',
-        marginTop: 5,
-        marginBottom: 5,
-      }}>
-        <TouchableWithoutFeedback
-          activeOpacity={0.9}
-          onPress={() => this.refs.theInput.focus()}
-        >
-          <View>
-            <Text style={styles.label}>{label}</Text>
-          </View>
-        </TouchableWithoutFeedback>
+      <View
+        style={{
+          alignSelf: 'stretch',
+          marginTop: 5,
+          marginBottom: 5,
+        }}>
+        <Text style={styles.label}>{label}</Text>
         <TextInput
           {...rest}
-          ref="theInput"
           style={{
             marginTop: 5,
             height: 40,
             padding: 10,
             borderColor: 'gray',
             borderWidth: 1,
-          }}
-        />
+          }} />
       </View>
     );
   }

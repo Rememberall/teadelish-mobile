@@ -25,13 +25,13 @@ const checkins = [{
   timestamp: Date.now() - 5200,
 }];
 
-module.exports.findByUsername = username =>  checkins
-  .filter(checkin => checkin.username === username);
+module.exports.findByUsername = username => checkins
+  .filter(checkin => checkin.username === username.toLowerCase());
 
 
-module.exports.create = checkin => {
+module.exports.create = (checkin) => {
   if (!checkin || !checkin.username || !checkin.brand || !checkin.name) {
-    throw new Error(`bad checkin: ${chekcin}`);
+    throw new Error(`bad checkin: ${checkin}`);
   }
 
   const checkinWithTimestamp = Object.assign({}, checkin, {

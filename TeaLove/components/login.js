@@ -39,34 +39,31 @@ class Login extends Component {
       .then(this.props.toHome)
       .catch(({ message: errorMessage }) => {
         this.setState({ errorMessage });
-      })
+      });
   }
 
   render() {
     const { username, password, errorMessage } = this.state;
 
     return (
-      <View style={{
-        flex: 1,
-        alignSelf: 'stretch',
-      }}>
-        <Heading style={{
-          alignSelf: 'flex-start',
+      <View
+        style={{
+          flex: 1,
+          alignSelf: 'stretch',
         }}>
-          Sign in!
-        </Heading>
+        <View style={{ alignSelf: 'flex-start' }}>
+          <Heading>Sign in!</Heading>
+        </View>
         <LabelledTextInput
           label="Username"
           autoFocus
           onChangeText={newUsername => this.setState({ username: newUsername })}
-          value={username}
-        />
+          value={username} />
         <LabelledTextInput
           label="Password"
           secureTextEntry
           onChangeText={newPassword => this.setState({ password: newPassword })}
-          value={password}
-        />
+          value={password} />
         {errorMessage && <Text style={{ color: 'red' }}>{errorMessage}</Text>}
         <View style={{ alignSelf: 'flex-end' }}>
           <Button
@@ -74,8 +71,7 @@ class Login extends Component {
             title="Sign in"
             color="green"
             backgroundColor="yellow"
-            accessibilityLabel="Sign in"
-          />
+            accessibilityLabel="Sign in" />
         </View>
       </View>
     );
@@ -85,6 +81,7 @@ class Login extends Component {
 Login.propTypes = {
   initialUsername: PropTypes.string,
   initialPassword: PropTypes.string,
+  toHome: PropTypes.func.isRequired,
 };
 
 Login.defaultProps = {
