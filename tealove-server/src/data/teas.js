@@ -72,7 +72,40 @@ const teas = [{
   name: 'Double Mint'
   description: 'All natural ingredients*'
 }, {
-  
+  id: 16,
+  brand: 'Twinings',
+  name: 'Apple & Pear'
+  description: 'Naturally caffeine free with all natural ingredients*'
+}, {
+  id: 17,
+  brand: 'Twinings',
+  name: 'Blueberry & Apple'
+  description: 'Naturally caffeine free with all natural ingredients*'
+}, {
+  id: 18,
+  brand: 'Twinings',
+  name: 'Refreshing Rosehip & Apple'
+  description: 'Naturally caffeine free with all natural ingredients*'
+}, {
+  id: 19,
+  brand: 'Twinings',
+  name: 'Sleep'
+  description: 'Relax and drift away. All natural ingredients*'
+}, {
+  id: 20,
+  brand: 'Twinings',
+  name: 'Lemon Trio'
+  description: 'Naturally caffeine free with all natural ingredients*'
+}, {
+  id: 21,
+  brand: 'Twinings',
+  name: 'Pomegranate & Raspberry'
+  description: 'Naturally caffeine free with all natural ingredients*'
+}, {
+  id: 22,
+  brand: 'Twinings',
+  name: 'Energising Peppermint & Nettle'
+  description: 'Naturally caffeine free with all natural ingredients*'
 }];
 
 module.exports.list = () => teas;
