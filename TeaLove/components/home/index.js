@@ -92,7 +92,7 @@ class Home extends Component {
             <View>
               <Text style={{ fontSize: 24 }}>Latest checkins</Text>
               <View style={{ marginTop: 10 }}>
-                {user.checkins.slice(0, 4).map(checkin => (
+                {user.checkins.slice(user.checkins.length - 3).map(checkin => (
                   <View key={checkin.timestamp} style={{ marginTop: 3, marginBottom: 3 }}>
                     <CheckinSummary
                       onPress={() => {}}
