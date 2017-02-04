@@ -1,38 +1,18 @@
 import React, { Component } from 'react';
-import { AsyncStorage, View, Text, Image } from 'react-native';
+import { View, Text, Image } from 'react-native';
 
 import Heading from '../heading';
 import CheckinSummary from '../checkin-summary';
 import timeOfDay from '../../lib/time-of-day';
 import voldemort from '../../images/voldemort.jpg';
 import { teacup, chart } from '../../style/icons';
-
 import NavigationBarInstrument from './navigation-bar-instrument';
+import withUserData from '../with-user-data';
+import userDataPropTypes from '../user-data-prop-types';
 
 class Home extends Component {
-  constructor() {
-    super();
-    this.state = {
-      token: null,
-      user: null,
-    };
-  }
-
-  componentWillMount() {
-    AsyncStorage.getItem('@TeaLove:token')
-      .then((token) => {
-        this.setState({ token });
-        return token;
-      })
-      .then(token => fetch('http://localhost:3000/me', {
-        headers: { 'X-Token': token },
-      }))
-      .then(res => res.json())
-      .then(user => this.setState({ user }));
-  }
-
   render() {
-    const { user } = this.state;
+    const { user } = this.props;
 
     return (
       <View
@@ -112,7 +92,7 @@ class Home extends Component {
             <View>
               <Text style={{ fontSize: 24 }}>Latest checkins</Text>
               <View style={{ marginTop: 10 }}>
-                {user.checkins.slice(0, 4).map(checkin => (
+                {user.checkins.slice(user.checkins.length - 3).map(checkin => (
                   <View key={checkin.timestamp} style={{ marginTop: 3, marginBottom: 3 }}>
                     <CheckinSummary
                       onPress={() => {}}
@@ -129,4 +109,8 @@ class Home extends Component {
   }
 }
 
-export default Home;
+Home.propTypes = {
+  ...userDataPropTypes,
+};
+
+export default withUserData(Home);

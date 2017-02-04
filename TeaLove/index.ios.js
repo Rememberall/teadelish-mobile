@@ -2,6 +2,7 @@ import React from 'react';
 import { AppRegistry, StyleSheet, Navigator, View } from 'react-native';
 import Login from './components/login';
 import Home from './components/home';
+import NewCheckin from './components/new-checkin';
 
 const styles = StyleSheet.create({
   container: {
@@ -22,6 +23,8 @@ const TeaLove = () => (
             return <Login toHome={() => navigator.push({ title: 'Home' })} />;
           case 'Home':
             return <Home />;
+          case 'New checkin':
+            return <NewCheckin />;
           default: throw new Error(`Tried to navigate to a bad route '${route.title}'`);
         }
       }} />
