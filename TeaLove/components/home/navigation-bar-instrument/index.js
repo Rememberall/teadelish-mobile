@@ -1,9 +1,11 @@
-import React from 'react';
+import { View } from 'react-native';
 
 import NavigationBar from '../../navigation-bar';
 
 const NavigationBarInstrument = () => (
-  <NavigationBar />
-);
+  <View>
+    <NavigationBar />
+  </View>
+)
 
-export default NavigationBarInstrument;
+export default NavigationBar;
