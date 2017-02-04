@@ -6,7 +6,6 @@ import CheckinSummary from '../checkin-summary';
 import timeOfDay from '../../lib/time-of-day';
 import voldemort from '../../images/voldemort.jpg';
 import { teacup, chart } from '../../style/icons';
-//import * as colors from '../../style/colors';
 
 import NavigationBarInstrument from './navigation-bar-instrument';
 
