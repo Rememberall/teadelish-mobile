@@ -107,6 +107,13 @@ const teas = [{
   description: 'Naturally caffeine free with all natural ingredients*',
 }];
 
-module.exports.list = () => teas;
+module.exports.list = ({ fromIndex, limit }) => teas.slice(fromIndex, fromIndex + limit);
+
+module.exports.search = ({ fromIndex, limit, query }) => {
+  const queryLowerCase = query.toLowerCase();
+  return teas.slice(fromIndex)
+    .filter(({ brand, name }) => name.toLowerCase().includes(queryLowerCase) || brand.toLowerCase().includes(queryLowerCase))
+    .slice(0, limit);
+};
 
 module.exports.findById = id => teas.find(tea => tea.id === id);

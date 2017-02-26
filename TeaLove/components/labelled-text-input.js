@@ -34,7 +34,7 @@ class LabelledTextInput extends Component {
 
 LabelledTextInput.propTypes = {
   label: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   onChangeText: PropTypes.func.isRequired,
 };
 

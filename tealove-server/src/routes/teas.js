@@ -33,7 +33,14 @@ router.get('/', (req, res) => {
     return;
   }
 
-  res.send(teas.list().slice(fromIndex, fromIndex + limit));
+  const query = req.query.query;
+
+  if (!query) {
+    res.send(teas.list({ fromIndex, limit }));
+    return;
+  }
+
+  res.send(teas.search({ query, limit }));
 });
 
 module.exports = router;
