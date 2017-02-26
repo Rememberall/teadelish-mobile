@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableHighlight, ListView } from 'react-native';
-import Heading from './heading';
-import withUserData from './with-user-data';
-import userDataPropTypes from './user-data-prop-types';
-import LabelledTextInput from './labelled-text-input';
+import Heading from '../heading';
+import withUserData from '../with-user-data';
+import userDataPropTypes from '../user-data-prop-types';
+import LabelledTextInput from '../labelled-text-input';
+import styles from './style.js';
 
 const teasListDataSourceDefinition = new ListView.DataSource({
   rowHasChanged: (left, right) => left !== right,
@@ -57,7 +58,7 @@ class NewCheckin extends Component {
 
     return (
       <View>
-        <View style={{ marginBottom: 20 }}>
+        <View style={styles.container}>
           <Heading>New checkin</Heading>
         </View>
         {teas && (
@@ -75,15 +76,10 @@ class NewCheckin extends Component {
                   disabled={!user}
                   underlayColor="lightgray"
                   onPress={() => checkin(user.username, token, id)}
-                  style={{
-                    backgroundColor: 'yellow',
-                    marginBottom: 10,
-                    borderWidth: 1,
-                  }}>
+                  style={styles.listItem}>
                   <View
-                    key={id} style={{
-                      padding: 10,
-                    }}
+                    key={id}
+                    style={styles.listItemTextWrapper}
                   >
                     <Text>{brand}: {name}</Text>
                   </View>
