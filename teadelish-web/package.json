@@ -8,6 +8,7 @@
     "react-scripts": "1.0.16"
   },
   "scripts": {
+    "lint-css": "stylelint 'src/**/*.scss'",
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src src/ -o src/ --watch --recursive",
     "start": "react-scripts start",
@@ -16,6 +17,11 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "node-sass-chokidar": "^0.0.3"
+    "node-sass-chokidar": "^0.0.3",
+    "stylelint": "^8.2.0",
+    "stylelint-config-standard": "^17.0.0"
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard"
   }
 }
